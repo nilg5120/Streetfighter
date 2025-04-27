@@ -1,6 +1,7 @@
 from ultralytics import YOLO
 import cv2
 import os
+import shutil
 
 # モデルをロード（標準の物体検出モデル）
 model = YOLO('yolov8n.pt')  # "n"はNano版＝超軽量版（速い）
@@ -10,6 +11,9 @@ frames_folder = r'C:\develop\Streetfighter\frames'
 
 # 保存先フォルダ
 output_folder = r'C:\develop\Streetfighter\detected_frames'
+# ★最初に保存先フォルダをまっさらにする
+if os.path.exists(output_folder):
+    shutil.rmtree(output_folder)
 os.makedirs(output_folder, exist_ok=True)
 
 # フォルダ内の全フレームを読み込んで検出

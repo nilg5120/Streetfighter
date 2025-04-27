@@ -1,14 +1,18 @@
 import cv2
 import os
+import shutil
 
 # 動画ファイルのパス
-video_path = r'C:/Users/ohkub/Videos/Desktop/Desktop 2023.11.10 - 06.39.04.01.mp4'
+video_path = r'C:\Users\ohkub\Videos\Street Fighter 6\無題の動画 ‐ Clipchampで作成.mp4'
 
 
 
 # 出力するフォルダ
 output_folder = r'C:\develop\Streetfighter\frames'
-os.makedirs(output_folder, exist_ok=True)
+# ★最初にフォルダの中身を全部消す
+if os.path.exists(output_folder):
+    shutil.rmtree(output_folder)  # フォルダごと削除
+os.makedirs(output_folder, exist_ok=True)  # フォルダ作り直す
 
 # 動画ファイルを開く
 cap = cv2.VideoCapture(video_path)
