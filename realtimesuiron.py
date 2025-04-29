@@ -4,8 +4,8 @@ import joblib
 from ultralytics import YOLO
 
 # モデルをロード
-detect_model = YOLO(r'C:\Users\ohkub\runs\detect\train5\weights\best.pt')    # 豪鬼検出モデル
-pose_model = YOLO('yolov8n-pose.pt')                                          # 骨格推定モデル
+detect_model = YOLO(r'C:\Users\ohkub\runs\detect\train5\weights\best.pt').to('cuda')    # 豪鬼検出モデル
+pose_model = YOLO('yolov8n-pose.pt').to('cuda')                                          # 骨格推定モデル
 motion_model = joblib.load(r'C:\develop\Streetfighter\gouki_motion_model.pkl') # 動き分類モデル
 
 # 動画ファイル
