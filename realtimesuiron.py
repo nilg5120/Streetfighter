@@ -5,7 +5,7 @@ import os
 from ultralytics import YOLO
 
 # モデルをロード
-detect_model = YOLO(r'C:\Users\ohkub\runs\detect\train6\weights\best.pt').to('cuda')  # ← NEWモデル
+detect_model = YOLO(r'C:\Users\ohkub\runs\detect\train7\weights\best.pt').to('cuda')  # ← NEWモデル
 pose_model = YOLO('yolov8n-pose.pt').to('cuda')
 motion_model = joblib.load(r'C:\develop\Streetfighter\gouki_motion_model.pkl')
 
@@ -54,7 +54,7 @@ while True:
                     }])
 
                     prediction = motion_model.predict(features)[0]
-                    label_map = {0: '波動拳', 1: '昇竜拳'}
+                    label_map = {0: 'Hadoken', 1: 'Shoryuken'}  # ← 英語表記に変更！
                     motion_name = label_map[prediction]
 
                     # 表示用描画
